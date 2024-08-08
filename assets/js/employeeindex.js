@@ -53,7 +53,7 @@ $(document).ready(function() {
   $('#query').autocomplete({
       source: function(request, response) {
           $.ajax({
-              url: 'employee/search',
+              url: 'employee/autocomplete',
               type: "GET",
               data: {
                   query: request.term
