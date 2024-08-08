@@ -4,30 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <h2>Login</h2>
+    <div class="container mt-4">
+        <h2 class="mb-4">Login</h2>
+        <?php if ($this->session->flashdata('error')): ?>
+            <div class="alert alert-danger">
+                <?php echo $this->session->flashdata('error'); ?>
+            </div>
+        <?php endif; ?>
 
-    <?php if ($this->session->flashdata('error')): ?>
-        <p style="color: red;">
-            <?= $this->session->flashdata('error'); ?>
-        </p>
-    <?php endif; ?>
+        <form method="post" action="<?php echo site_url('user/login_process'); ?>">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" class="form-control" required />
+            </div>
 
-    <form action="<?= site_url('user/login_process'); ?>" method="post">
-        <p>
-            <label for="username">Username:</label>
-            <input type="text" name="username" id="username" value="<?= set_value('username'); ?>" />
-        </p>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" class="form-control" required />
+            </div>
 
-        <p>
-            <label for="password">Password:</label>
-            <input type="password" name="password" id="password" />
-        </p>
-
-        <p>
-            <input type="submit" value="Login" />
-        </p>
-    </form>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </div>
 </body>
 </html>

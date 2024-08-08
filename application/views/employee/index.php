@@ -11,7 +11,19 @@
 </head>
 <body>
     <div class="container mt-4">
-        <h2 class="mb-4">Employee Management</h2>
+
+        <div class="d-flex justify-content-between mb-4">
+            <h2>Test</h2>
+            <div>
+                <?php if ($is_admin): ?>
+                <a href="<?php echo site_url('user/register'); ?>" class="btn btn-primary mr-2">Register New Employee</a>
+                <?php endif; ?>
+            </div>
+
+            <div>
+                <a href="<?php echo base_url('user/logout'); ?>" class="btn btn-danger" onclick="logout();">Logout</a>
+            </div>
+        </div>
 
         <p class="mb-4">
             <a href="<?php echo site_url('employee/create'); ?>" class="btn btn-primary">Add Employee</a>
@@ -64,9 +76,9 @@
             </thead>
             <tbody id="employee-table-body">
                 <?php if (!empty($employees)): ?>
-                    <?php foreach ($employees as $employee): ?>
+                    <?php foreach ($employees as $index => $employee): ?>
                         <tr>
-                            <td><?php echo $employee['id']; ?></td>
+                            <td><?php echo $index + 1; ?></td>
                             <td><?php echo $employee['name']; ?></td>
                             <td><?php echo $employee['surname']; ?></td>
                             <td><?php echo $employee['position']; ?></td>
@@ -82,9 +94,7 @@
         </table>
     </div>
 
-    <script
-    src="<?php echo base_url('assets/js/empployeeindex.js'); ?>">
-    </script>
+    <script src="<?php echo base_url('assets/js/employeeindex.js'); ?>"></script>
 
 </body>
 </html>

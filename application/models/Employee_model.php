@@ -23,6 +23,7 @@ class Employee_model extends CI_Model {
         return $this->db->insert('employee', $data);
     }
 
+
     public function search($params) {
 
         if (!empty($params['min_salary']) && is_numeric($params['min_salary'])) {
